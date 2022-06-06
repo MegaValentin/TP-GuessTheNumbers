@@ -1,4 +1,4 @@
-from crypt import methods
+
 from urllib import request
 from flask import Flask, render_template
 
@@ -15,4 +15,5 @@ def usuario():
     email = request.form['email']
     return render_template('usuario.html', nombre=nombre, email=email)
 
-    
+if __name__=='__main__':
+    app.run(port=3000, debug=True)
