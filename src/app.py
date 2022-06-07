@@ -1,6 +1,6 @@
+from flask import Flask, render_template, request
+from domain.User import User 
 
-from urllib import request
-from flask import Flask, render_template
 
 app=Flask(__name__)
 #ruta a la plantilla principal
@@ -11,9 +11,12 @@ def index():
 @app.route('/user' , methods=['POST'])
 def usuario():
     #datos del usuario para comenzar el juego
-    nombre = request.form['nombre']
+    usuario = request.form['usuario']
     email = request.form['email']
-    return render_template('usuario.html', nombre=nombre, email=email)
+
+    
+
+    return render_template('user.html', usuario=usuario, email=email)
 
 if __name__=='__main__':
     app.run(port=3000, debug=True)
