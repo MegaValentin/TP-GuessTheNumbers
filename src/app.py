@@ -14,7 +14,6 @@ def usuario():
     usuario = request.form['usuario']
     email = request.form['email']
 
-    
 
     return render_template('user.html', usuario=usuario, email=email)
 
