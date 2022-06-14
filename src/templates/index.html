@@ -5,19 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TpFLASK</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <h1>Guess The Numbers</h1>
     <form method="POST" action="/user">
         <label>Usuario:</label>
         <!--propiedad del objeto-->
-        <input type="text" name="usuario">
+        <input class="usuario" type="text" name="usuario" autocomplete="false">
         <br/>
         <br/>
         <!--Boton-->
         <button class="button">
-            <span class="text">submit</span>
+            <span class="button" type="submit">submit</span>
             <i class="ri-chech-line icon"></i>
         </button>
     </form>

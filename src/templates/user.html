@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
     <title>TpFLASK-Juego</title>
 </head>
 <body>
-    <h1>¡BIENVENIDO A GUESS THE NUMBERS</h1>
+    <h1>¡BIENVENIDO {{ usuario }} A GUESS THE NUMBERS</h1>
+    <div class="incognita">
+        
+        <span>*</span>
+        <span>*</span>
+        <span>*</span>
+        <span>*</span>
+        <span>*</span>
+        <div>
+            <form method="post">
+                
+                <div class="input-group">
 
-    <form method="post">
-        <label class="numeros", style="font-family: 'cursive'; text-align: center;">Ingrese 5 numeros</label>
-        <div class="input-group">
-
-            <div>
-                <input type="number" name="1" required />
-                <input type="number" name="2" required />
-                <input type="number" name="3" required />
-                <input type="number" name="4" required />
-                <input type="number" name="5" required />
-            </div>
+                    <div>
+                        <input type="number" name="1" required />
+                        <input type="number" name="2" required />
+                        <input type="number" name="3" required />
+                        <input type="number" name="4" required />
+                        <input type="number" name="5" required />
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <button class="boton" type="submit" name="enviar" style="text-align: center;"  value="Guardar">Jugar</button>
+            </form>
         </div>
-
-        <button class="boton" type="submit" name="enviar" style="text-align: center;"  value="Guardar">Jugar</button>
-    </form>
+    </div>
     {{tiempo}}
     <br/>
     {{numerosIngresados}}
