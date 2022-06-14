@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request
 from domain.User import User 
 
@@ -16,6 +17,10 @@ def usuario():
 
 
     return render_template('user.html', usuario=usuario, email=email)
+
+@app.route('/game', methods=['GET']['POST'])
+
+
 
 if __name__=='__main__':
     app.run(port=3000, debug=True)
