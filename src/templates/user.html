@@ -9,7 +9,24 @@
 <body>
     <h1>Hola {{ usuario }}.¡BIENVENIDO A GUESS THE NUMBERS</h1>
 
-    
+    <form method="post">
+        <label class="numeros", style="font-family: 'cursive'; text-align: center;">Ingrese 5 numeros</label>
+        <div class="input-group">
+
+            <div>
+                <input type="number" name="1" required />
+                <input type="number" name="2" required />
+                <input type="number" name="3" required />
+                <input type="number" name="4" required />
+                <input type="number" name="5" required />
+            </div>
+        </div>
+
+        <button class="boton" type="submit" name="enviar" style="text-align: center;"  value="Guardar">Jugar</button>
+    </form>
+    {{tiempo}}
+    <br/>
+    {{numerosIngresados}}
     
 </body>
 </html>
