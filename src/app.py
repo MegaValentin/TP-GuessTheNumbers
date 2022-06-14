@@ -1,4 +1,3 @@
-from dis import Instruction
 from flask import Flask, render_template, request, session
 from domain.User import User 
 from juego import juego #archivo - clase
@@ -13,7 +12,7 @@ def index():
 @app.route('/user' , methods=['POST'])
 def usuario():
     #datos del usuario para comenzar el juego
-    usuario = request.form['usuario']
+    usuario =( request.form['usuario'])
     
     return render_template('user.html', usuario=usuario)
 
@@ -36,5 +35,5 @@ def game():
 
         tiempo, numerosIngresados = juego.compararAmbasListas(5, numerosDelUsuario, numerosRandom)
 
-        return render_template("instrucciones.html" , tiempo = tiempo, numerosIngresados = numerosIngresados)
+        return render_template("user.html" , tiempo = tiempo, numerosIngresados = numerosIngresados)
         

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
+    {{  session['usuario']  }}
     <h1>Guess The Numbers</h1>
     <form method="POST" action="/user">
         <label>Usuario:</label>
