@@ -53,7 +53,7 @@ class juego:
             
         
         return numerosIngresados
-    def compararAmbasListas(cantidadDeIntentos, numerosDelUsuario):
+    def compararAmbasListas(cantidadDeIntentos, numerosDelUsuario, numerosRandom):
 
         """Compara ambas listas(lista random generada y lista armada por el ususario) en una cantidad de intentos"""
 
@@ -61,7 +61,7 @@ class juego:
         amarillo = []
         numerosAAdivinar = []
         #listaRandom = [1, 2, 3, 4, 5]
-        listaRandom = juego.randomDe5Numeros(10)
+        listaRandom = numerosRandom
         jugadas = 0
         intentos = cantidadDeIntentos 
 

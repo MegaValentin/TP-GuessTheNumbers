@@ -1,3 +1,4 @@
+from dis import Instruction
 from flask import Flask, render_template, request, session
 from domain.User import User 
 from juego import juego #archivo - clase
@@ -31,8 +32,9 @@ def game():
         numero5= request.form['5']
 
         numerosDelUsuario = [int(numero1), int(numero2), int(numero3), int(numero4), int(numero5)]
+        numerosRandom = juego.randomDe5Numeros(5)
 
-        tiempo, numerosIngresados = juego.compararAmbasListas(5, numerosDelUsuario)
+        tiempo, numerosIngresados = juego.compararAmbasListas(5, numerosDelUsuario, numerosRandom)
 
-        return render_template('user.html', tiempo = tiempo, numerosIngresados = numerosIngresados)
+        return render_template("instrucciones.html" , tiempo = tiempo, numerosIngresados = numerosIngresados)
         
