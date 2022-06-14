@@ -60,8 +60,8 @@ class juego:
         verde = []
         amarillo = []
         numerosAAdivinar = []
-        listaRandom = [1, 2, 3, 4, 5]
-        # listaRandom = juego.randomDe5Numeros(10)
+        #listaRandom = [1, 2, 3, 4, 5]
+        listaRandom = juego.randomDe5Numeros(10)
         jugadas = 0
         intentos = cantidadDeIntentos 
 
