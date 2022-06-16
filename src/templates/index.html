@@ -10,16 +10,16 @@
 <body>
     <h1>Guess The Numbers</h1>
     <form method="POST" action="/user">
-        <label>Usuario:</label>
-        <!--propiedad del objeto-->
-        <input class="user" type="text" name="usuario" autocomplete="false">
-        <br/>
-        <br/>
-        <!--Boton-->
-        <button class="button">
-            <span class="button" type="submit">submit</span>
-            <i class="ri-chech-line icon"></i>
-        </button>
+        <div class="inputBox">
+            <!--propiedad del objeto-->
+            <input class="user" type="text" required="required" name="usuario" autocomplete="false">
+            <span>Usuario</span>
+            <br/>
+            <br/>
+            <!--Boton-->
+            
+        </div>
+        
     </form>
 
     <div class="instrucciones">
@@ -29,7 +29,7 @@
             solamente 5 intentos. Si adivinas los números y la posicion correctamente, ganas. Si
             no los adivinas correctamente, pierdes.</p>
 
-            <div>
+            <div class="colores">
                 <li>
                 <p class="verde">verde significa posición y número correctos</p>
                 </li>
