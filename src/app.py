@@ -52,8 +52,8 @@ def game():
         numero4= request.form['4']
         numero5= request.form['5']
 
-        
         numerosRandom = [1,2,3,4,5]
+        
         #numerosRandom = listaRandom()
         
         
@@ -75,9 +75,9 @@ def game():
                         if numerosDelUsuario[nu] != numerosRandom[nr]:
                             rojo.append(numerosDelUsuario[nu])
 
-            if len(verde) == 5:
-                return render_template("ganaste.html")
-        
+            if len(jugadasTotales) == 5:
+                return render_template('perdiste.html')
+
     return render_template('user.html')       
         
         
