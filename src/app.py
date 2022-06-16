@@ -77,6 +77,9 @@ def game():
 
             if len(jugadasTotales) == 5:
                 return render_template('perdiste.html')
+            
+            elif len(verde) == 5:
+                return render_template('ganaste.html')
 
     return render_template('user.html')       
         
