@@ -51,8 +51,7 @@ def usuario():
        
         global intentos
         intentos = 5
-        cont = 0
-       
+        
         usuarioValido = esValido(usuario)
         if usuarioValido:
             user = User.query.filter_by(usuario=usuario)
@@ -81,6 +80,12 @@ def listaRandom():
     
     return numerosAleatorios
 
+def horaDeLaPartida():
+        
+        hora = datetime.now() 
+        horaactual=datetime.strftime(hora)
+        print(horaactual)
+
 @app.route('/game', methods=['GET','POST'])
 def game(): 
     if request.method == 'GET':
@@ -92,7 +97,8 @@ def game():
         jugadasTotales = []
         verde = []
         amarillo = []
-        cont = session['cont']
+        cont = 0
+        intentosDelJugador= intentos
         print(intentos)
 
         numero1= request.form['1']
@@ -107,8 +113,8 @@ def game():
         
         print(numerosRandom)
         numerosDelUsuario = [int(numero1), int(numero2), int(numero3), int(numero4), int(numero5)]
-        jugadasTotales.append([numerosDelUsuario])
-        while (cont <= intentos ):
+        jugadasTotales.append(numerosDelUsuario)
+        while (cont <= intentosDelJugador ):
             
             
             for nu in range(len(numerosDelUsuario)):
@@ -122,9 +128,11 @@ def game():
                     elif numerosDelUsuario[nu] == numerosRandom[nr]:
                         amarillo.append(numerosDelUsuario[nu])
 
-            
+            cont += 1
+            print(cont)
+
             if len(verde) == 5:
-                tiempo = datetime
+                tiempo = horaDeLaPartida()
                 return render_template('ganaste.html', tiempo=tiempo, jugadasTotales=jugadasTotales)
             
             
@@ -135,9 +143,8 @@ def game():
             # elif intentos == 5:
             #     return render_template('perdiste.html',jugadasTotales=jugadasTotales )
             else:
-                cont += 1
-                print(cont)    
-                return render_template('user.html', numerosDelUsuario=numerosDelUsuario, verde=verde, amarillo=amarillo,cont = cont)
+                    
+                return render_template('user.html', jugadasTotales=jugadasTotales , verde=verde, amarillo=amarillo,cont = cont)
 
             
     return redirect(url_for('user'))       
