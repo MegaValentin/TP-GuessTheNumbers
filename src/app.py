@@ -19,6 +19,31 @@ def esValido(palabra):
     return palabra.strip() != ""
 
 @app.route('/user' , methods=['GET', 'POST'])
+# @app.route('/user' , methods=['GET', 'POST'])
+# def usuario():
+#     if request.method == 'POST':
+#         #datos del usuario para comenzar el juego
+#         usuario = request.form.get('usuario')
+
+#         user = User(usuario)
+#         error = None
+#         if not usuario:
+#             error= "Se requiere un nombre de usuario"
+        
+#         user_name = User.query.filter_by(usuario=usuario).first()
+
+#         if user_name == None:
+#             db.session.add(user)
+#             db.session.commit()
+#         else:
+#             error = f'El usuario {usuario} ya esta registrado'
+#         flash (error)
+
+#         global intentos
+#         intentos = 5
+#         cont = 0
+        
+#     return render_template('user.html', usuario=usuario)
 def usuario():
     if request.method == 'POST':
         #datos del usuario para comenzar el juego
@@ -82,7 +107,7 @@ def game():
         
         print(numerosRandom)
         numerosDelUsuario = [int(numero1), int(numero2), int(numero3), int(numero4), int(numero5)]
-        jugadasTotales.append(numerosDelUsuario)
+        jugadasTotales.append([numerosDelUsuario])
         while (cont <= intentos ):
             
             
