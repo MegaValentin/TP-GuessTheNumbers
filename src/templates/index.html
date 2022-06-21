@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-    <h1>Guess The Numbers</h1>
+    <h1 style="color:#00dfc4">Guess The Numbers</h1>
     <form method="POST" action="/user">
         <div class="inputBox">
             <!--propiedad del objeto-->
@@ -23,22 +23,19 @@
     </form>
 
     <div class="instrucciones">
-        <h2 >INSTRUCCIONES</h2>
+        <h2>INSTRUCCIONES</h2>
         
         <p> El juego consiste de 5 números entre 0 y 10. Los números son
             generado al azar. Tienes que adivinar los números y sus lugares. Tendaras
             solamente 5 intentos. Si adivinas los números y la posicion correctamente, ganas. Si
-            no los adivinas correctamente, pierdes.</p>
+            no los adivinas correctamente, perdes.</p>
 
             <div class="colores">
-                <li>
-                <p class="verde">verde significa posición y número correctos</p>
+                <li class="verde">
+                verde significa posición y número correcto
                 </li>
-                <li>
-                <p class="amarillo">amarillo significa número correcto</p>
-                </li>
-                <li>
-                <p class="rojo">rojo significa incorrecto</p>
+                <li class="amarillo">
+                amarillo significa número correcto
                 </li>
             </div>
     </div>

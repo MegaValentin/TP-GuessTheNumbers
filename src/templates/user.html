@@ -8,7 +8,9 @@
     <title>TpFLASK-Juego</title>
 </head>
 <body>
-    <h1>GUESS THE NUMBERS</h1>
+    <h1 style="color:#00dfc4" class="titulo"> GUESS THE NUMBERS</h1>
+
+    {{ usuario }}
     <div class="incognita">
         
         
@@ -31,18 +33,18 @@
             </form>
         </div>
     </div>
-    {{tiempo}}
-    <br>
-    {{ cont  }}
-    <br/>
-    {{ numerosDelUsuario}}
-    <br/>
-    <br/>
-    {{ verde }}
-    <br/>
-    <br/>
-    {{ amarillo }}
-   
+    <div class="infoDeLaPartida">
+        {{ cont  }}
+        <div class="jugada">
+            {{ numerosDelUsuario}}
+        </div>
+        <div class="verde">
+            {{ verde }}
+        </div>
+        <div class="amarillo">    
+            {{ amarillo  }}
+        </div>
+    </div>
     
 </body>
 </html>

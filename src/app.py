@@ -1,26 +1,44 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, redirect, render_template, request, session, url_for
+from flask_sqlalchemy import SQLAlchemy
 from domain.User import User 
 import random
 from datetime import datetime
+from info.basedata import db
 
 
 
 app=Flask(__name__)
 app.secret_key = 'secret_key'
+SQLAlchemy(app)
 #ruta a la plantilla principal
 @app.route('/')
 def index():
     return render_template('index.html')
 
+def esValido(palabra):
+    return palabra.strip() != ""
+
 @app.route('/user' , methods=['GET', 'POST'])
 def usuario():
-    #datos del usuario para comenzar el juego
-    usuario = request.form['usuario']
-    global intentos
-    intentos = 5
-    cont = 0
-    session['cont'] = cont
-        
+    if request.method == 'POST':
+        #datos del usuario para comenzar el juego
+        usuario = request.form['usuario']
+       
+        global intentos
+        intentos = 5
+        cont = 0
+       
+        usuarioValido = esValido(usuario)
+        if usuarioValido:
+            user = User.query.filter_by(usuario=usuario)
+        else:
+            return render_template('index.html')
+
+        if user is None:
+            user = User(usuario)
+            session["usuario"] = usuario
+            return redirect(url_for('user'))
+
     return render_template('user.html', usuario=usuario)
 
 def listaRandom():
@@ -62,9 +80,9 @@ def game():
         
         #numerosRandom = listaRandom()
         
-        print(cont)
+        print(numerosRandom)
         numerosDelUsuario = [int(numero1), int(numero2), int(numero3), int(numero4), int(numero5)]
-        jugadasTotales.append([numerosDelUsuario])
+        jugadasTotales.append(numerosDelUsuario)
         while (cont <= intentos ):
             
             
@@ -79,10 +97,10 @@ def game():
                     elif numerosDelUsuario[nu] == numerosRandom[nr]:
                         amarillo.append(numerosDelUsuario[nu])
 
-            cont += 1
-            print(cont)
+            
             if len(verde) == 5:
-                return render_template('ganaste.html')
+                tiempo = datetime
+                return render_template('ganaste.html', tiempo=tiempo, jugadasTotales=jugadasTotales)
             
             
             if len(jugadasTotales) == 5:
@@ -92,10 +110,11 @@ def game():
             # elif intentos == 5:
             #     return render_template('perdiste.html',jugadasTotales=jugadasTotales )
             else:
-                
+                cont += 1
+                print(cont)    
                 return render_template('user.html', numerosDelUsuario=numerosDelUsuario, verde=verde, amarillo=amarillo,cont = cont)
 
             
-    return render_template('user.html')       
+    return redirect(url_for('user'))       
         
         

@@ -51,6 +51,7 @@ h1{
     font-size: 2em;
     font-weight: bold;
     text-align: center;
+    ;
 }
 form{
     display: flex;
@@ -80,5 +81,34 @@ form{
     font-weight: bold;
     text-align: center;
     text-align: center;
+}
+.infoDeLaPartida{
+    border-radius: 10px;
+    position: relative;
+    top: -150px; 
+    left: 40px;
+    width: 30%;
+    margin: 7rem auto;
+    border: solid rgb(231, 226, 226) 1px;
+    background: white;
+}
+.jugada{
+    width: 30%;
+    margin: 7rem auto;
+    border: solid rgb(232, 237, 233) 1px;
+    
+}
+.verde{
+    width: 30%;
+    margin: 7rem auto;
+    border: solid rgb(16, 223, 30) 1px;
+    background: green;
+}
+.amarillo{
+    
+    width: 30%;
+    margin: 7rem auto;
+    border: solid rgb(196, 219, 25) 1px;
+    background: yellow;
 }
 
