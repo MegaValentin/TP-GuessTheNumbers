@@ -6,6 +6,7 @@ from datetime import datetime
 
 
 app=Flask(__name__)
+app.secret_key = 'secret_key'
 #ruta a la plantilla principal
 @app.route('/')
 def index():
@@ -15,7 +16,11 @@ def index():
 def usuario():
     #datos del usuario para comenzar el juego
     usuario = request.form['usuario']
-    
+    global intentos
+    intentos = 5
+    cont = 0
+    session['cont'] = cont
+        
     return render_template('user.html', usuario=usuario)
 
 def listaRandom():
@@ -44,7 +49,8 @@ def game():
         jugadasTotales = []
         verde = []
         amarillo = []
-        rojo = []
+        cont = session['cont']
+        print(intentos)
 
         numero1= request.form['1']
         numero2= request.form['2']
@@ -56,10 +62,11 @@ def game():
         
         #numerosRandom = listaRandom()
         
-        
-        while (True):
-            numerosDelUsuario = [int(numero1), int(numero2), int(numero3), int(numero4), int(numero5)]
-            jugadasTotales.append(numerosDelUsuario)
+        print(cont)
+        numerosDelUsuario = [int(numero1), int(numero2), int(numero3), int(numero4), int(numero5)]
+        jugadasTotales.append([numerosDelUsuario])
+        while (cont <= intentos ):
+            
             
             for nu in range(len(numerosDelUsuario)):
                 for nr in range(len(numerosRandom)):
@@ -71,16 +78,24 @@ def game():
 
                     elif numerosDelUsuario[nu] == numerosRandom[nr]:
                         amarillo.append(numerosDelUsuario[nu])
-                    else:
-                        if numerosDelUsuario[nu] != numerosRandom[nr]:
-                            rojo.append(numerosDelUsuario[nu])
 
-            if len(jugadasTotales) == 5:
-                return render_template('perdiste.html')
-            
-            elif len(verde) == 5:
+            cont += 1
+            print(cont)
+            if len(verde) == 5:
                 return render_template('ganaste.html')
+            
+            
+            if len(jugadasTotales) == 5:
 
+                return render_template('perdiste.html', jugadasTotales=jugadasTotales)
+
+            # elif intentos == 5:
+            #     return render_template('perdiste.html',jugadasTotales=jugadasTotales )
+            else:
+                
+                return render_template('user.html', numerosDelUsuario=numerosDelUsuario, verde=verde, amarillo=amarillo,cont = cont)
+
+            
     return render_template('user.html')       
         
         
