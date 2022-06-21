@@ -63,7 +63,7 @@ def usuario():
             session["usuario"] = usuario
             return redirect(url_for('user'))
 
-    return render_template('user.html', usuario=usuario)
+    return render_template('user.html')
 
 def listaRandom():
         
@@ -80,17 +80,13 @@ def listaRandom():
     
     return numerosAleatorios
 
-def horaDeLaPartida():
-        
-        hora = datetime.now() 
-        horaactual=datetime.strftime(hora)
-        print(horaactual)
+
 
 @app.route('/game', methods=['GET','POST'])
 def game(): 
     if request.method == 'GET':
 
-        return render_template('user.html')
+        return render_template('user.html',usuario=usuario)
 
     elif request.method == 'POST':
         
@@ -132,8 +128,8 @@ def game():
             print(cont)
 
             if len(verde) == 5:
-                tiempo = horaDeLaPartida()
-                return render_template('ganaste.html', tiempo=tiempo, jugadasTotales=jugadasTotales)
+                
+                return render_template('ganaste.html',  jugadasTotales=jugadasTotales)
             
             
             if len(jugadasTotales) == 5:

@@ -10,7 +10,7 @@
 <body>
     <h1 style="color:#00dfc4" class="titulo"> GUESS THE NUMBERS</h1>
 
-    {{ usuario }}
+    {{ session['usuario'] }}
     <div class="incognita">
         
         
@@ -20,11 +20,11 @@
                 <div class="input-group">
 
                     <div>
-                        <input type="number" name="1" required />
-                        <input type="number" name="2" required />
-                        <input type="number" name="3" required />
-                        <input type="number" name="4" required />
-                        <input type="number" name="5" required />
+                        <input type="number" name="1" min="0" max="10" required />
+                        <input type="number" name="2" min="0" max="10" required />
+                        <input type="number" name="3" min="0" max="10" required />
+                        <input type="number" name="4" min="0" max="10" required />
+                        <input type="number" name="5" min="0" max="10" required />
                     </div>
                 </div>
                 <br/>
